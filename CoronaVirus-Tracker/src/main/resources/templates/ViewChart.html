@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>View Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+	<div class="card-header">
+			<h1>Corona Virus Death Report </h1>
+
+	</div>
+	<canvas id="myChart"></canvas>
+
+  
+  <script>
+	  var country = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola","Antarica", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso","Burma", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo(Brazzaville)", "Congo(Kinshasa)", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czechia", "Denmark" ,"Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt","El Salvador", "Equatorial Guinea", "Eritrea", "Estonia","Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti","Holy See", "Honduras", "Hungary", "Iceland", "india", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati","Korea,North","Korea,Sounth", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "MS Zaandam", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique","Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau","Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan","Summer Olympic 2020", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Tuvalu","US", "Uganda", "Ukraine", "United Arab Emirates (UAE)", "United Kingdom (UK)", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam","West Bank and Gaza","Winter Olympics 2022", "Yemen", "Zambia", "Zimbabwe"];
+
+   // var country = ["A", "India", "Brazil", "Russia", "France"];
+    var deathCount = [7896,3598,6881,165,1933,0,146,130472,8724,19574,21970,10138,833,1553,29445,579,7118,33814,688,163,21,22365,16280,2801,699276,225,38228,396,19490,38,413,3056,1965,51720,113,194,64273,101041,142339,161,388,1464,9245,884,17987,8530,1330,42491,8345,13,4384,0,36014,24812,4230,183,103,2946,1425,7572,883,8967,166176,306,372,16971,168935,1462,34779,238,20182,467,176,1298,860,0,11111,48762,263,530779,160941,144933,25375,8708,12329,188322,3514,72997,14122,19071,5688,18,6,34093,3211,2570,2991,758,6269,10841,723,295,6437,89,9596,1220,2,1423,2686,36967,311,743,828,17,997,1044,333188,61,12003,67,2136,2808,16296,2242,4090,1,12020,23313,2548,245,315,3155,9662,5213,4628,30644,9,8609,670,19878,219539,66188,119010,26266,988,67736,388478,1468,47,409,123,29,122,77,9618,1971,17881,172,126,1722,21035,7078,153,1361,102595,138,119479,16830,5017,0,1404,23777,14210,3164,17672,125,846,33918,138,290,13,4355,29341,101492,0,1123836,3630,113283,2349,220721,7617,1637,14,5854,43186,5706,0,2159,4057,5671];
+
+    const ctx = document.getElementById('myChart');
+   function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+ for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: country,
+        datasets: [{
+          label: 'Death Count',
+          data: deathCount,
+          borderWidth: 5,
+          backgroundColor: deathCount.map(() => getRandomColor())
+
+        
+
+        }]
+      },
+   options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+			 </script>
+</body>
+</html>
